@@ -1,0 +1,16 @@
+#!/bin/bash
+while true
+do
+printf "\Would you like to update your youtube-dl install? [y]yes or [n]no.\n>>>"; read yesorno
+    if [[ $yesorno == "" ]]; then
+        printf "\nThat is not an option. [y]yes or [n]no."
+    elif [[ $yesorno == "y"* ]]; then
+        printf "\nUpdating youtube-dl...\n"
+        sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+        sudo chmod a+rx /usr/local/bin/youtube-dl
+        break
+    elif [[ $yesorno == "n"* ]]; then
+        printf "\nNot updating your youtube-dl. Exiting script.\n" && break;
+    fi
+done
+exit
